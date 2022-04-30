@@ -1,6 +1,7 @@
-import Link from 'next/link';
+import NextLink from 'next/link';
+import { Box, Heading, List, ListItem } from '@chakra-ui/layout';
+import { chakra } from '@chakra-ui/system';
 import { ICategory } from '@/types';
-import styles from '@styles/components/Categories.module.scss';
 
 type CategoriesProps = {
   categories: ICategory[];
@@ -8,19 +9,37 @@ type CategoriesProps = {
 
 export const Categories: React.FC<CategoriesProps> = (props) => {
   return (
-    <div className={styles.wrapper}>
-      <h1 className={styles.pageTitle}>カテゴリー</h1>
-      <ul>
+    <Box pt="40px" pb={{ base: 0, lg: '40px', xl: '40px' }} px="0">
+      <Heading
+        as="h1"
+        fontSize="20px"
+        fontWeight="bold"
+        backgroundColor="#eee"
+        py="6px"
+        px="10px"
+        mb="10px"
+        borderRadius="5px"
+      >
+        カテゴリー
+      </Heading>
+      <List>
         {props.categories.map((category) => {
           return (
-            <li className={styles.list} key={category.id}>
-              <Link href="/category/[categoryId]/page/[id]" as={`/category/${category.id}/page/1`}>
-                <a className="link">{category.name}</a>
-              </Link>
-            </li>
+            <ListItem key={category.id} borderBottom="1px solid #eee">
+              <NextLink
+                href="/category/[categoryId]/page/[id]"
+                as={`/category/${category.id}/page/1`}
+                passHref
+                prefetch={false}
+              >
+                <chakra.a p="10px" borderBottom="none">
+                  {category.name}
+                </chakra.a>
+              </NextLink>
+            </ListItem>
           );
         })}
-      </ul>
-    </div>
+      </List>
+    </Box>
   );
 };
