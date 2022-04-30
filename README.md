@@ -1,5 +1,25 @@
 # microCMS × Next.js × Chakra UI example
 
+## まだ Chakra UI への変更が終わってないもの
+
+- components
+
+  - Footer.tsx
+  - Header.tsx
+  - Latest.tsx
+  - Loader.tsx
+  - Meta.tsx
+  - Pager.tsx
+  - PopularArticle.tsx
+  - Post.tsx
+  - Search.tsx
+  - Share.tsx
+  - Tags.tsx
+  - Toc.tsx
+
+- pages
+  全部
+
 ## 機能
 
 - 記事一覧
