@@ -1,0 +1,48 @@
+.wrapper {
+  padding: 16px 0;
+}
+
+.pager {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0 0;
+}
+
+.omission {
+  color: var(--color-text-off);
+  margin: 4px 12px;
+}
+
+.page {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  margin: 4px;
+
+  &.arrow {
+    margin: 4px 12px;
+  }
+
+  &.active {
+    background-color: var(--color-blue);
+
+    a,
+    a:hover {
+      color: #fff;
+    }
+  }
+
+  a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    color: var(--color-text-sub);
+
+    &:hover {
+      color: var(--color-blue);
+    }
+  }
+}

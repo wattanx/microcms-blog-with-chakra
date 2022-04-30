@@ -1,0 +1,48 @@
+{
+  "name": "with-typescript",
+  "version": "1.0.0",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "format": "prettier --write **/*.{tsx,ts}"
+  },
+  "dependencies": {
+    "@chakra-ui/react": "^1.8.8",
+    "@emotion/react": "^11",
+    "@emotion/styled": "^11",
+    "@types/dompurify": "^2.2.2",
+    "@types/jsdom": "^16.2.10",
+    "@types/react-scroll": "^1.8.2",
+    "@types/rss": "^0.0.28",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "@typescript-eslint/parser": "^4.22.0",
+    "axios": "^0.21.1",
+    "dayjs": "^1.10.4",
+    "dompurify": "^2.2.8",
+    "eslint": "^7.24.0",
+    "eslint-plugin-react": "^7.23.2",
+    "framer-motion": "^6",
+    "highlight.js": "^10.7.2",
+    "jsdom": "^16.5.3",
+    "microcms-js-sdk": "^2.0.0",
+    "next": "^12.1.5",
+    "prettier": "^2.2.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-query": "^3.19.1",
+    "react-scroll": "^1.8.2",
+    "rss": "^1.2.2",
+    "sass": "^1.32.8"
+  },
+  "devDependencies": {
+    "@types/node": "^12.12.21",
+    "@types/react": "^17.0.2",
+    "@types/react-dom": "^17.0.9",
+    "eslint-config-next": "^11.0.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "typescript": "^4.3.2"
+  },
+  "license": "Apache-2.0 License"
+}
