@@ -1,10 +1,12 @@
 import { AppProps } from 'next/app';
 import Head from 'next/head';
+import { ChakraProvider } from '@chakra-ui/react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { Footer, Header } from '@components';
 import { config } from '../site.config';
 import { usePageView } from '@hooks';
 import '../styles/globals.scss';
+import { theme } from '../theme';
 
 const queryClient = new QueryClient();
 
@@ -33,12 +35,12 @@ export default function MyApp({ Component, pageProps }: AppProps) {
           async
         ></script>
       </Head>
-      <div className="wrapper">
+      <ChakraProvider theme={theme}>
         <Header />
         <QueryClientProvider client={queryClient}>
           <Component {...pageProps} />
         </QueryClientProvider>
-      </div>
+      </ChakraProvider>
       <Footer />
     </>
   );
