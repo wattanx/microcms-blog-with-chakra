@@ -4,7 +4,6 @@
 
 - components
 
-  - Footer.tsx
   - Header.tsx
   - Latest.tsx
   - Loader.tsx
