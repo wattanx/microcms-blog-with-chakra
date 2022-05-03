@@ -7,5 +7,14 @@ const breakpoints = {
   xl: '1160px',
 };
 
+const semanticTokens = {
+  colors: {
+    borderDark: '#ccc',
+    borderLight: '#eee',
+    border: '#ddd',
+    textMain: '#2b2c30',
+  },
+};
+
 // 3. Extend the theme
-export const theme = extendTheme({ breakpoints });
+export const theme = extendTheme({ breakpoints, semanticTokens });
