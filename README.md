@@ -4,9 +4,6 @@
 
 - components
 
-  - Header.tsx
-  - Latest.tsx
-  - Loader.tsx
   - Meta.tsx
   - Pager.tsx
   - PopularArticle.tsx
