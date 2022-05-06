@@ -13,6 +13,8 @@ const semanticTokens = {
     borderLight: '#eee',
     border: '#ddd',
     textMain: '#2b2c30',
+    textSub: '#616269',
+    colorBgPurpleLight: '#f7f7fc',
   },
 };
 

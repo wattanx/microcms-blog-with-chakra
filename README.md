@@ -8,7 +8,6 @@
   - Pager.tsx
   - PopularArticle.tsx
   - Post.tsx
-  - Search.tsx
   - Share.tsx
   - Tags.tsx
   - Toc.tsx
