@@ -1,6 +1,7 @@
 import NextLink from 'next/link';
+import { Box, List, ListItem } from '@chakra-ui/layout';
+import { chakra } from '@chakra-ui/system';
 import { ICategory, ITag } from '@/types';
-import styles from '@styles/components/Pager.module.scss';
 
 type PagerProps = {
   currentPage: number;
@@ -20,59 +21,88 @@ export const Pager: React.FC<PagerProps> = (props) => {
     }
   };
   return (
-    <div className={styles.wrapper}>
-      <ul className={styles.pager}>
+    <Box p="16px 0">
+      <List display="flex" flexWrap="wrap" justifyContent="center" alignItems="center" p="40px 0 0">
         {props.currentPage > 1 && (
-          <li className={`${styles.page} ${styles.arrow}`}>
+          <ListItem w="40px" h="40px" borderRadius="5px" m="4px 12px">
             <NextLink href={getPath(props.currentPage - 1)}>
-              <a>
-                <img width="24" height="24" src="/images/icon_arrow_left.svg" alt="前のページへ" />
-              </a>
+              <chakra.a
+                display="flex"
+                justifyContent="center"
+                alignItems="center"
+                h="100%"
+                color="textSub"
+                _hover={{ color: 'blue.500' }}
+              >
+                <chakra.img
+                  width="24"
+                  height="24"
+                  src="/images/icon_arrow_left.svg"
+                  alt="前のページへ"
+                />
+              </chakra.a>
             </NextLink>
-          </li>
+          </ListItem>
         )}
         {props.currentPage > 3 && (
-          <li className={styles.page}>
+          <ListItem w="40px" h="40px" borderRadius="5px" m="4px">
             <NextLink href={getPath(1)}>
               <a>1</a>
             </NextLink>
-          </li>
+          </ListItem>
         )}
-        {props.currentPage > 4 && <li className={styles.omission}>...</li>}
+        {props.currentPage > 4 && (
+          <ListItem color="textOff" m="4px 12px">
+            ...
+          </ListItem>
+        )}
         {props.pager.map((page, index) => {
           if (props.currentPage - 3 <= page && page <= props.currentPage + 1) {
+            const isActive = props.currentPage === page + 1;
             return (
-              <li
+              <ListItem
                 key={index}
-                className={`${styles.page} ${
-                  props.currentPage === page + 1 ? `${styles.active}` : ''
-                }`}
+                w="40px"
+                h="40px"
+                borderRadius="5px"
+                m="4px"
+                bgColor={isActive ? 'blue.500' : ''}
+                _hover={{ color: isActive ? '#fff' : '' }}
               >
                 <NextLink href={getPath(page + 1)}>
                   <a>{page + 1}</a>
                 </NextLink>
-              </li>
+              </ListItem>
             );
           }
         })}
-        {props.currentPage + 3 < props.pager.length && <li className={styles.omission}>...</li>}
+        {props.currentPage + 3 < props.pager.length && (
+          <ListItem color="textOff" m="4px 12px">
+            ...
+          </ListItem>
+        )}
         {props.currentPage + 2 < props.pager.length && (
-          <li className={styles.page}>
+          <ListItem w="40px" h="40px" borderRadius="5px" m="4px">
             <NextLink href={getPath(props.pager.length)}>
-              <a>{props.pager.length}</a>
+              <chakra.a>{props.pager.length}</chakra.a>
             </NextLink>
-          </li>
+          </ListItem>
         )}
         {props.currentPage < props.pager.length && (
-          <li className={`${styles.page} ${styles.arrow}`}>
+          <ListItem w="40px" h="40px" borderRadius="5px" m="4px 12px">
             <NextLink href={getPath(props.currentPage + 1)}>
-              <a>
-                <img width="24" height="24" src="/images/icon_arrow_right.svg" alt="次のページへ" />
-              </a>
+              <chakra.a>
+                <chakra.img
+                  width="24"
+                  height="24"
+                  src="/images/icon_arrow_right.svg"
+                  alt="次のページへ"
+                />
+              </chakra.a>
             </NextLink>
-          </li>
+          </ListItem>
         )}
-      </ul>
-    </div>
+      </List>
+    </Box>
   );
 };

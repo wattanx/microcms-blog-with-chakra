@@ -5,7 +5,6 @@
 - components
 
   - Meta.tsx
-  - Pager.tsx
   - PopularArticle.tsx
   - Post.tsx
   - Share.tsx
