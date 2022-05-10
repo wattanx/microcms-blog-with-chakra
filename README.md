@@ -5,7 +5,6 @@
 - components
 
   - Meta.tsx
-  - PopularArticle.tsx
   - Post.tsx
   - Share.tsx
   - Tags.tsx
