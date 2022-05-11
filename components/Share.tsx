@@ -1,10 +1,17 @@
+import { Box, List, ListItem } from '@chakra-ui/layout';
+import { chakra } from '@chakra-ui/system';
 import { config } from '../site.config';
-import styles from '@styles/components/Share.module.scss';
 
 type ShareProps = {
   id: string;
   title?: string;
 };
+
+const ShareList: React.FC<{ children: React.ReactNode }> = ({ children }) => (
+  <ListItem textAlign="center" mb={{ base: '0', md: '20px' }} mx={{ base: '20px', md: '0' }}>
+    {children}
+  </ListItem>
+);
 
 export const Share: React.FC<ShareProps> = (props) => {
   const twitterLink = `https://twitter.com/intent/tweet?text=${props.title}&url=${config.baseUrl}/${props.id}/&hashtags=microcms`;
@@ -12,29 +19,39 @@ export const Share: React.FC<ShareProps> = (props) => {
   const hatenaLink = `https://b.hatena.ne.jp/entry/${config.baseUrl}/${props.id}/`;
   const feedLink = `${config.baseUrl}/feed`;
   return (
-    <div className={styles.share}>
-      <ul className={styles.shareLists}>
-        <li className={styles.shareList}>
-          <a href={twitterLink} target="_blank" rel="noopener noreferrer">
-            <img src="/images/icon_twitter.svg" alt="twitter" />
-          </a>
-        </li>
-        <li className={styles.shareList}>
-          <a href={facebookLink} target="_blank" rel="noopener noreferrer">
-            <img src="/images/icon_facebook.svg" alt="Facebook" />
-          </a>
-        </li>
-        <li className={styles.shareList}>
-          <a href={hatenaLink} target="_blank" rel="noopener noreferrer">
-            <img src="/images/icon_hatena.svg" alt="はてなブックマーク" />
-          </a>
-        </li>
-        <li className={styles.shareList}>
-          <a href={feedLink} target="_blank" rel="noopener noreferrer">
-            <img src="/images/icon_feed.svg" alt="フィード" />
-          </a>
-        </li>
-      </ul>
-    </div>
+    <Box mt={{ base: '40px', md: '0' }} pt={{ md: '16px' }}>
+      <List
+        display={{ base: 'flex', md: 'block' }}
+        justifyContent={{ base: 'center', md: 'normal' }}
+        position={{ md: 'sticky' }}
+        top={{ md: '100px', lg: '120px' }}
+      >
+        <ShareList>
+          <chakra.a href={twitterLink} target="_blank" rel="noopener noreferrer">
+            <chakra.img
+              maxH={{ base: '20px', md: '24px' }}
+              maxW={{ md: '24px' }}
+              src="/images/icon_twitter.svg"
+              alt="twitter"
+            />
+          </chakra.a>
+        </ShareList>
+        <ShareList>
+          <chakra.a href={facebookLink} target="_blank" rel="noopener noreferrer">
+            <chakra.img src="/images/icon_facebook.svg" alt="Facebook" />
+          </chakra.a>
+        </ShareList>
+        <ShareList>
+          <chakra.a href={hatenaLink} target="_blank" rel="noopener noreferrer">
+            <chakra.img src="/images/icon_hatena.svg" alt="はてなブックマーク" />
+          </chakra.a>
+        </ShareList>
+        <ShareList>
+          <chakra.a href={feedLink} target="_blank" rel="noopener noreferrer">
+            <chakra.img src="/images/icon_feed.svg" alt="フィード" />
+          </chakra.a>
+        </ShareList>
+      </List>
+    </Box>
   );
 };
