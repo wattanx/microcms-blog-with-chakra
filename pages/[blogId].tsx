@@ -16,6 +16,7 @@ import { Tags } from '@components/Tags';
 
 type DetailProps = {
   blog: IBlog;
+  sanitizedHtml: string;
   body: string;
   toc: TocTypes[];
   blogs: IBlog[];
@@ -71,7 +72,7 @@ const Detail: NextPage<DetailProps> = (props) => {
               isDetail={true}
             />
             {props.blog.toc_visible && <Toc toc={props.toc} />}
-            <Post body={props.body} />
+            <Post sanitizedHtml={props.sanitizedHtml} />
           </div>
         </div>
       </article>
