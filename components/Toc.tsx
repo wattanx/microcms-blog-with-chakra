@@ -8,7 +8,13 @@ type TocProps = {
 };
 
 const getMarginLeft = (name: string) => {
-  return name === 'h2' ? '10px' : '20px';
+  if (name === 'h2') {
+    return '10px';
+  }
+  if (name === 'h3') {
+    return '20px';
+  }
+  return '';
 };
 
 export const Toc: React.FC<TocProps> = (props) => {
