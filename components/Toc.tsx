@@ -1,25 +1,45 @@
-import styles from '@styles/components/Toc.module.scss';
 import { Link } from 'react-scroll';
-import { TocTypes } from '@types';
+import { Box, Heading, List, ListItem } from '@chakra-ui/layout';
+
+import { TocTypes } from 'types';
 
 type TocProps = {
   toc: TocTypes[];
 };
 
+const getMarginLeft = (name: string) => {
+  return name === 'h2' ? '10px' : '20px';
+};
+
 export const Toc: React.FC<TocProps> = (props) => {
   return (
-    <div className={styles.wrapper}>
-      <h4 className={styles.title}>
-        <ul className={styles.lists}>
+    <Box bgColor="#f7f7fc" borderRadius="5px" p="20px" mb="40px">
+      <Heading as="h4" fontSize="16px" fontWeight="bold" m="0 0 10px" borderRadius="5px">
+        <List>
           {props.toc.map((x) => {
+            const ml = getMarginLeft(x.name);
             return (
-              <li key={x.id} className={`${styles.list} ${x.name}`}>
-                <Link to={`${x.id}`}>{x.text}</Link>
-              </li>
+              <ListItem
+                key={x.id}
+                className={`${x.name}`}
+                p="5px 0"
+                fontSize="14px"
+                ml={ml}
+                borderBottom="1px solid #e7e7f3"
+              >
+                <Box
+                  _hover={{ color: 'link' }}
+                  _before={{ content: '""', mr: '5px', color: '#cacae7' }}
+                  as={Link}
+                  to={`${x.id}`}
+                >
+                  {x.text}
+                </Box>
+              </ListItem>
             );
           })}
-        </ul>
-      </h4>
-    </div>
+        </List>
+      </Heading>
+    </Box>
   );
 };

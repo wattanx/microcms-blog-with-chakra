@@ -22,6 +22,7 @@ const semanticTokens = {
     textSub: '#616269',
     textOff: '#999',
     colorBgPurpleLight: '#f7f7fc',
+    link: '#331cbf',
   },
 };
 
