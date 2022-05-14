@@ -8,7 +8,7 @@ export * from './Loader';
 export * from './Meta';
 export * from './Pager';
 export * from './PopularArticle';
-export * from './Post';
+export * from './Post/Post';
 export * from './Search';
 export * from './Share';
 export * from './Toc';

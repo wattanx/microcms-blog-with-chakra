@@ -1,6 +1,6 @@
 import NextLink from 'next/link';
 import { Box, List, ListItem } from '@chakra-ui/layout';
-import { chakra } from '@chakra-ui/system';
+import { chakra, CSSObject } from '@chakra-ui/system';
 import { ICategory, ITag } from '@/types';
 
 type PagerProps = {
@@ -8,6 +8,24 @@ type PagerProps = {
   selectedCategory?: ICategory;
   selectedTag?: ITag;
   pager: [];
+};
+
+const PageItem: React.FC<{ children: React.ReactNode; color: string; _hover: CSSObject }> = ({
+  children,
+  ...props
+}) => {
+  return (
+    <chakra.a
+      cursor="pointer"
+      display="flex"
+      justifyContent="center"
+      alignItems="center"
+      h="100%"
+      {...props}
+    >
+      {children}
+    </chakra.a>
+  );
 };
 
 export const Pager: React.FC<PagerProps> = (props) => {
@@ -26,28 +44,23 @@ export const Pager: React.FC<PagerProps> = (props) => {
         {props.currentPage > 1 && (
           <ListItem w="40px" h="40px" borderRadius="5px" m="4px 12px">
             <NextLink href={getPath(props.currentPage - 1)}>
-              <chakra.a
-                display="flex"
-                justifyContent="center"
-                alignItems="center"
-                h="100%"
-                color="textSub"
-                _hover={{ color: 'blue.500' }}
-              >
+              <PageItem color="textSub" _hover={{ color: 'blue.500' }}>
                 <chakra.img
                   width="24"
                   height="24"
                   src="/images/icon_arrow_left.svg"
                   alt="前のページへ"
                 />
-              </chakra.a>
+              </PageItem>
             </NextLink>
           </ListItem>
         )}
         {props.currentPage > 3 && (
           <ListItem w="40px" h="40px" borderRadius="5px" m="4px">
             <NextLink href={getPath(1)}>
-              <a>1</a>
+              <PageItem color="textSub" _hover={{ color: 'blue.500' }}>
+                1
+              </PageItem>
             </NextLink>
           </ListItem>
         )}
@@ -67,10 +80,14 @@ export const Pager: React.FC<PagerProps> = (props) => {
                 borderRadius="5px"
                 m="4px"
                 bgColor={isActive ? 'blue.500' : ''}
-                _hover={{ color: isActive ? '#fff' : '' }}
               >
                 <NextLink href={getPath(page + 1)}>
-                  <a>{page + 1}</a>
+                  <PageItem
+                    color={isActive ? '#fff' : 'textSub'}
+                    _hover={{ color: isActive ? '#fff' : '' }}
+                  >
+                    {page + 1}
+                  </PageItem>
                 </NextLink>
               </ListItem>
             );
@@ -84,21 +101,23 @@ export const Pager: React.FC<PagerProps> = (props) => {
         {props.currentPage + 2 < props.pager.length && (
           <ListItem w="40px" h="40px" borderRadius="5px" m="4px">
             <NextLink href={getPath(props.pager.length)}>
-              <chakra.a>{props.pager.length}</chakra.a>
+              <PageItem color="textSub" _hover={{ color: 'blue.500' }}>
+                {props.pager.length}
+              </PageItem>
             </NextLink>
           </ListItem>
         )}
         {props.currentPage < props.pager.length && (
           <ListItem w="40px" h="40px" borderRadius="5px" m="4px 12px">
             <NextLink href={getPath(props.currentPage + 1)}>
-              <chakra.a>
+              <PageItem color="textSub" _hover={{ color: 'blue.500' }}>
                 <chakra.img
                   width="24"
                   height="24"
                   src="/images/icon_arrow_right.svg"
                   alt="次のページへ"
                 />
-              </chakra.a>
+              </PageItem>
             </NextLink>
           </ListItem>
         )}
